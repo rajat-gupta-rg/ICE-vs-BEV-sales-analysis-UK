@@ -1,0 +1,15 @@
+-- Data 
+SELECT * FROM Book1 
+WHERE BodyType = 'Cars' 
+ORDER BY Date 
+LIMIT 10;
+
+-- Total car records
+SELECT COUNT(*) as total_car_records 
+FROM Book1 
+WHERE BodyType = 'Cars';
+
+-- Date range
+SELECT MIN(Date) as earliest_date, MAX(Date) as latest_date 
+FROM Book1 
+WHERE BodyType = 'Cars';
