@@ -1,0 +1,20 @@
+-- Year-over-year growth rates
+WITH yearly_totals AS (
+    SELECT 
+        year,
+        SUM(ice_sales) as total_ice,
+        SUM(bev_sales) as total_bev,
+        SUM(hybrid_sales) as total_hybrid
+    FROM car_sales_analysis
+    GROUP BY year
+)
+SELECT 
+    year,
+    total_ice,
+    total_bev,
+    total_hybrid,
+    ROUND(((total_ice - LAG(total_ice) OVER (ORDER BY year)) * 100.0 / LAG(total_ice) OVER (ORDER BY year)), 2) as ice_growth_pct,
+    ROUND(((total_bev - LAG(total_bev) OVER (ORDER BY year)) * 100.0 / LAG(total_bev) OVER (ORDER BY year)), 2) as bev_growth_pct,
+    ROUND(((total_hybrid - LAG(total_hybrid) OVER (ORDER BY year)) * 100.0 / LAG(total_hybrid) OVER (ORDER BY year)), 2) as hybrid_growth_pct
+FROM yearly_totals
+ORDER BY year;
