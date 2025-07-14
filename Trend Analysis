@@ -1,0 +1,40 @@
+-- Year-over-year analysis
+SELECT 
+    year,
+    COUNT(*) as months_data,
+    ROUND(AVG(ice_sales), 2) as avg_ice_sales,
+    ROUND(AVG(bev_sales), 2) as avg_bev_sales,
+    ROUND(AVG(hybrid_sales), 2) as avg_hybrid_sales,
+    ROUND(AVG(ice_percentage), 2) as avg_ice_pct,
+    ROUND(AVG(bev_percentage), 2) as avg_bev_pct,
+    ROUND(SUM(ice_sales), 2) as total_ice_sales,
+    ROUND(SUM(bev_sales), 2) as total_bev_sales
+FROM car_sales_analysis
+GROUP BY year
+ORDER BY year;
+
+-- Monthly trends (seasonality)
+SELECT 
+    month,
+    COUNT(*) as years_data,
+    ROUND(AVG(ice_sales), 2) as avg_ice_sales,
+    ROUND(AVG(bev_sales), 2) as avg_bev_sales,
+    ROUND(AVG(ice_percentage), 2) as avg_ice_pct,
+    ROUND(AVG(bev_percentage), 2) as avg_bev_pct
+FROM car_sales_analysis
+GROUP BY month
+ORDER BY 
+    CASE month
+        WHEN 'January' THEN 1
+        WHEN 'February' THEN 2
+        WHEN 'March' THEN 3
+        WHEN 'April' THEN 4
+        WHEN 'May' THEN 5
+        WHEN 'June' THEN 6
+        WHEN 'July' THEN 7
+        WHEN 'August' THEN 8
+        WHEN 'September' THEN 9
+        WHEN 'October' THEN 10
+        WHEN 'November' THEN 11
+        WHEN 'December' THEN 12
+    END;
