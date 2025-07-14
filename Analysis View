@@ -1,0 +1,191 @@
+-- Main analysis view
+CREATE VIEW car_sales_analysis AS
+SELECT 
+    Date,
+    -- Convert text dates to sortable format for proper ordering
+    CASE 
+        WHEN Date LIKE '%2014' THEN '2014-' || 
+            CASE SUBSTR(Date, 1, INSTR(Date, ' ') - 1)
+                WHEN 'January' THEN '01'
+                WHEN 'February' THEN '02'
+                WHEN 'March' THEN '03'
+                WHEN 'April' THEN '04'
+                WHEN 'May' THEN '05'
+                WHEN 'June' THEN '06'
+                WHEN 'July' THEN '07'
+                WHEN 'August' THEN '08'
+                WHEN 'September' THEN '09'
+                WHEN 'October' THEN '10'
+                WHEN 'November' THEN '11'
+                WHEN 'December' THEN '12'
+            END
+        WHEN Date LIKE '%2015' THEN '2015-' || 
+            CASE SUBSTR(Date, 1, INSTR(Date, ' ') - 1)
+                WHEN 'January' THEN '01'
+                WHEN 'February' THEN '02'
+                WHEN 'March' THEN '03'
+                WHEN 'April' THEN '04'
+                WHEN 'May' THEN '05'
+                WHEN 'June' THEN '06'
+                WHEN 'July' THEN '07'
+                WHEN 'August' THEN '08'
+                WHEN 'September' THEN '09'
+                WHEN 'October' THEN '10'
+                WHEN 'November' THEN '11'
+                WHEN 'December' THEN '12'
+            END
+        WHEN Date LIKE '%2016' THEN '2016-' || 
+            CASE SUBSTR(Date, 1, INSTR(Date, ' ') - 1)
+                WHEN 'January' THEN '01'
+                WHEN 'February' THEN '02'
+                WHEN 'March' THEN '03'
+                WHEN 'April' THEN '04'
+                WHEN 'May' THEN '05'
+                WHEN 'June' THEN '06'
+                WHEN 'July' THEN '07'
+                WHEN 'August' THEN '08'
+                WHEN 'September' THEN '09'
+                WHEN 'October' THEN '10'
+                WHEN 'November' THEN '11'
+                WHEN 'December' THEN '12'
+            END
+        WHEN Date LIKE '%2017' THEN '2017-' || 
+            CASE SUBSTR(Date, 1, INSTR(Date, ' ') - 1)
+                WHEN 'January' THEN '01'
+                WHEN 'February' THEN '02'
+                WHEN 'March' THEN '03'
+                WHEN 'April' THEN '04'
+                WHEN 'May' THEN '05'
+                WHEN 'June' THEN '06'
+                WHEN 'July' THEN '07'
+                WHEN 'August' THEN '08'
+                WHEN 'September' THEN '09'
+                WHEN 'October' THEN '10'
+                WHEN 'November' THEN '11'
+                WHEN 'December' THEN '12'
+            END
+        WHEN Date LIKE '%2018' THEN '2018-' || 
+            CASE SUBSTR(Date, 1, INSTR(Date, ' ') - 1)
+                WHEN 'January' THEN '01'
+                WHEN 'February' THEN '02'
+                WHEN 'March' THEN '03'
+                WHEN 'April' THEN '04'
+                WHEN 'May' THEN '05'
+                WHEN 'June' THEN '06'
+                WHEN 'July' THEN '07'
+                WHEN 'August' THEN '08'
+                WHEN 'September' THEN '09'
+                WHEN 'October' THEN '10'
+                WHEN 'November' THEN '11'
+                WHEN 'December' THEN '12'
+            END
+        WHEN Date LIKE '%2019' THEN '2019-' || 
+            CASE SUBSTR(Date, 1, INSTR(Date, ' ') - 1)
+                WHEN 'January' THEN '01'
+                WHEN 'February' THEN '02'
+                WHEN 'March' THEN '03'
+                WHEN 'April' THEN '04'
+                WHEN 'May' THEN '05'
+                WHEN 'June' THEN '06'
+                WHEN 'July' THEN '07'
+                WHEN 'August' THEN '08'
+                WHEN 'September' THEN '09'
+                WHEN 'October' THEN '10'
+                WHEN 'November' THEN '11'
+                WHEN 'December' THEN '12'
+            END
+        WHEN Date LIKE '%2020' THEN '2020-' || 
+            CASE SUBSTR(Date, 1, INSTR(Date, ' ') - 1)
+                WHEN 'January' THEN '01'
+                WHEN 'February' THEN '02'
+                WHEN 'March' THEN '03'
+                WHEN 'April' THEN '04'
+                WHEN 'May' THEN '05'
+                WHEN 'June' THEN '06'
+                WHEN 'July' THEN '07'
+                WHEN 'August' THEN '08'
+                WHEN 'September' THEN '09'
+                WHEN 'October' THEN '10'
+                WHEN 'November' THEN '11'
+                WHEN 'December' THEN '12'
+            END
+        WHEN Date LIKE '%2021' THEN '2021-' || 
+            CASE SUBSTR(Date, 1, INSTR(Date, ' ') - 1)
+                WHEN 'January' THEN '01'
+                WHEN 'February' THEN '02'
+                WHEN 'March' THEN '03'
+                WHEN 'April' THEN '04'
+                WHEN 'May' THEN '05'
+                WHEN 'June' THEN '06'
+                WHEN 'July' THEN '07'
+                WHEN 'August' THEN '08'
+                WHEN 'September' THEN '09'
+                WHEN 'October' THEN '10'
+                WHEN 'November' THEN '11'
+                WHEN 'December' THEN '12'
+            END
+        WHEN Date LIKE '%2022' THEN '2022-' || 
+            CASE SUBSTR(Date, 1, INSTR(Date, ' ') - 1)
+                WHEN 'January' THEN '01'
+                WHEN 'February' THEN '02'
+                WHEN 'March' THEN '03'
+                WHEN 'April' THEN '04'
+                WHEN 'May' THEN '05'
+                WHEN 'June' THEN '06'
+                WHEN 'July' THEN '07'
+                WHEN 'August' THEN '08'
+                WHEN 'September' THEN '09'
+                WHEN 'October' THEN '10'
+                WHEN 'November' THEN '11'
+                WHEN 'December' THEN '12'
+            END
+        WHEN Date LIKE '%2023' THEN '2023-' || 
+            CASE SUBSTR(Date, 1, INSTR(Date, ' ') - 1)
+                WHEN 'January' THEN '01'
+                WHEN 'February' THEN '02'
+                WHEN 'March' THEN '03'
+                WHEN 'April' THEN '04'
+                WHEN 'May' THEN '05'
+                WHEN 'June' THEN '06'
+                WHEN 'July' THEN '07'
+                WHEN 'August' THEN '08'
+                WHEN 'September' THEN '09'
+                WHEN 'October' THEN '10'
+                WHEN 'November' THEN '11'
+                WHEN 'December' THEN '12'
+            END
+        WHEN Date LIKE '%2024' THEN '2024-' || 
+            CASE SUBSTR(Date, 1, INSTR(Date, ' ') - 1)
+                WHEN 'January' THEN '01'
+                WHEN 'February' THEN '02'
+                WHEN 'March' THEN '03'
+                WHEN 'April' THEN '04'
+                WHEN 'May' THEN '05'
+                WHEN 'June' THEN '06'
+                WHEN 'July' THEN '07'
+                WHEN 'August' THEN '08'
+                WHEN 'September' THEN '09'
+                WHEN 'October' THEN '10'
+                WHEN 'November' THEN '11'
+                WHEN 'December' THEN '12'
+            END
+    END AS date_sortable,
+
+    -- ICE vehicles (petrol + diesel)
+    (Petrol + Diesel) as ice_sales,
+
+    -- BEV vehicles
+    "Battery electric" as bev_sales,
+
+    -- Hybrid categories
+    ("Hybrid electric (petrol)" + "Hybrid electric (diesel)" + 
+     "Plug-in hybrid electric (petrol)" + "Plug-in hybrid electric (diesel)") as hybrid_sales,
+    Total,
+
+    -- Calculate percentages
+    ROUND((Petrol + Diesel) * 100.0 / Total, 2) as ice_percentage,
+    ROUND("Battery electric" * 100.0 / Total, 2) as bev_percentage,
+    ROUND(("Hybrid electric (petrol)" + "Hybrid electric (diesel)" + 
+           "Plug-in hybrid electric (petrol)" + "Plug-in hybrid electric (diesel)") * 100.0 / Total, 2) as hybrid_percentage
+FROM Book1
+WHERE BodyType = 'Cars';
