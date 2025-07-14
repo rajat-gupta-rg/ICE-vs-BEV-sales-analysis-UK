@@ -1,0 +1,21 @@
+-- Prepare data for simple linear regression (BEV growth over time)
+SELECT 
+    time_index as x,
+    bev_sales as y,
+    ice_sales,
+    Date
+FROM prediction_features
+WHERE bev_sales IS NOT NULL
+ORDER BY time_index;
+
+-- Statistical summary for regression
+SELECT 
+    COUNT(*) as n,
+    ROUND(AVG(time_index), 2) as mean_x,
+    ROUND(AVG(bev_sales), 2) as mean_y,
+    ROUND(MIN(bev_sales), 2) as min_bev,
+    ROUND(MAX(bev_sales), 2) as max_bev,
+    ROUND(MIN(ice_sales), 2) as min_ice,
+    ROUND(MAX(ice_sales), 2) as max_ice
+FROM prediction_features
+WHERE bev_sales IS NOT NULL;
