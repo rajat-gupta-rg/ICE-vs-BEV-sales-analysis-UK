@@ -1,0 +1,34 @@
+-- Drop and recreate prediction_features view with percentages
+DROP VIEW IF EXISTS prediction_features;
+
+CREATE VIEW prediction_features AS
+SELECT 
+    Date,
+    year,
+    month,
+    ice_sales,
+    bev_sales,
+    hybrid_sales,
+    ice_percentage,
+    bev_percentage,
+    hybrid_percentage,
+    Total,
+
+    -- Lag features (previous values)
+    LAG(ice_sales, 1) OVER (ORDER BY year, month) as ice_sales_lag1,
+    LAG(bev_sales, 1) OVER (ORDER BY year, month) as bev_sales_lag1,
+    LAG(ice_sales, 12) OVER (ORDER BY year, month) as ice_sales_lag12,
+    LAG(bev_sales, 12) OVER (ORDER BY year, month) as bev_sales_lag12,
+
+    -- Moving averages (3-month)
+    ROUND(AVG(ice_sales) OVER (ORDER BY year, month ROWS BETWEEN 2 PRECEDING AND CURRENT ROW), 2) as ice_ma3,
+    ROUND(AVG(bev_sales) OVER (ORDER BY year, month ROWS BETWEEN 2 PRECEDING AND CURRENT ROW), 2) as bev_ma3,
+
+    -- Moving averages (12-month)
+    ROUND(AVG(ice_sales) OVER (ORDER BY year, month ROWS BETWEEN 11 PRECEDING AND CURRENT ROW), 2) as ice_ma12,
+    ROUND(AVG(bev_sales) OVER (ORDER BY year, month ROWS BETWEEN 11 PRECEDING AND CURRENT ROW), 2) as bev_ma12,
+
+    -- Row number for indexing
+    ROW_NUMBER() OVER (ORDER BY year, month) as time_index
+FROM car_sales_analysis
+ORDER BY year, month;
