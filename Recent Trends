@@ -1,0 +1,23 @@
+-- Recent 24 months trends
+SELECT 
+    Date,
+    ice_sales,
+    bev_sales,
+    ice_percentage,
+    bev_percentage,
+    ice_ma3,
+    bev_ma3
+FROM prediction_features
+WHERE time_index > (SELECT MAX(time_index) - 24 FROM prediction_features)
+ORDER BY time_index;
+
+-- BEV adoption acceleration
+SELECT 
+    year,
+    ROUND(AVG(bev_sales), 2) as avg_bev_sales,
+    ROUND(AVG(bev_percentage), 2) as avg_bev_percentage,
+    ROUND(MAX(bev_percentage), 2) as max_bev_percentage
+FROM car_sales_analysis
+WHERE year >= '2020'
+GROUP BY year
+ORDER BY year;
